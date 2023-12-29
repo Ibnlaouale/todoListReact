@@ -1,38 +1,69 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  border: 2px solid green;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+}
+
+.divAddTask {
+  border: 1px solid blue;
+  width: fit-content;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.divForm {
+  border: 2px solid red;
+  padding: 1%;
+}
+
+.description {
+  height: 100px !important;
+}
+
+.btnAdd {
+  border: none;
+  background-color: #6aa7aa;
   color: white;
+  padding: 1% !important;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 5px 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.divStatut {
+  border: 2px solid green;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiFormControl-root {
+  width: -webkit-fill-available;
+  padding: 0%;
+}
+/* ============================= */
+.listTasks {
+  border: 2px solid blue;
+  padding: .5%;
+}
+.css-cuefkz-MuiContainer-root {
+  max-width: 100% !important;
+}
+.css-cuefkz-MuiContainer-root, .css-1oqqzyl-MuiContainer-root {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.css-12zvdn5 {
+  background-color: #cfe8fc;
+  /* height: 30vh !important; */
+}
+
+.css-cuefkz-MuiContainer-root {
+  width: 100%;
+  margin-left: 0% !important;
+  box-sizing: border-box !important;
+  margin-right: 0% !important;
+  display: block !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
 }
