@@ -17,7 +17,7 @@ function createData(id, categorie, titre, date, description, statut) {
   return { id, categorie, titre, date, description, statut };
 }
 const row2 = tableTasks.map((el,index) => {
-        return createData(el.id, el.categorie, el.titre, el.description, el.statut);
+        return createData(el.id, el.categorie, el.titre,el.date, el.description, el.statut);
     })
 
 
@@ -30,10 +30,10 @@ export default function BasicTable() {
         <TableHead>
           <TableRow sx={{backgroundColor:'#086171', color:'white', fontWeight:'bold'}}>
             <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} >#</TableCell>
-            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="right">Date</TableCell>
-            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="right">Titre</TableCell>
-            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="right">Catégorie</TableCell>
-            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="right">Opérations</TableCell>
+            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="center">Date</TableCell>
+            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="center">Titre</TableCell>
+            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="center">Catégorie</TableCell>
+            <TableCell sx={{color:'white', fontWeight:'bold', fontSize:'16px'}} align="center">Opérations</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

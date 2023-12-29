@@ -17,23 +17,39 @@ import '../index.css';
 
 // init localStorage
 if (!localStorage.getItem('tableTasks')) { localStorage.setItem('tableTasks', JSON.stringify([])) };
-if (!localStorage.getItem('tableStatus')) { localStorage.setItem('tableStatus', JSON.stringify([])) };
 
-    const tableTasks = JSON.parse(localStorage.getItem('tableTasks'));
-    const tableStatus = JSON.parse(localStorage.getItem('tableStatus'));
-    function updateStatus(task) {
-        let status = task.status;
-        let countTermier, countNouveau, countEncous = [0,0,0]
-        switch (status) {
-            case 'Nouveau':
-                
-                break;
-        
-            default:
-                break;
-        }
-        
+
+if (!localStorage.getItem('countNouveau')) { localStorage.setItem('countNouveau', 0) }
+if (!localStorage.getItem('countTerminer')) { localStorage.setItem('countTerminer', 0) }
+if (!localStorage.getItem('countEncours')) { localStorage.setItem('countEncours', 0) }
+
+
+const tableTasks = JSON.parse(localStorage.getItem('tableTasks'));
+let countNouveau = JSON.parse(localStorage.getItem('countNouveau'));
+let countTerminer = JSON.parse(localStorage.getItem('countTerminer'));
+let countEncours = JSON.parse(localStorage.getItem('countEncours'));
+
+
+function updateStatus(taskValue) {
+    let status = taskValue.statut;
+    switch (status) {
+        case 'Nouveau':
+            countNouveau++;
+            localStorage.setItem('countNouveau', JSON.stringify(countNouveau));
+            break;
+        case 'Terminé':
+            countTerminer++;
+            localStorage.setItem('countTerminer', JSON.stringify(countTerminer));
+            break;
+        case 'En-cours':
+            countEncours++;
+            localStorage.setItem('countEncours', JSON.stringify(countEncours));
+            break;
+        default:
+            break;
     }
+}
+
 export default function Form() {
     const [categorie, setCategorie] = React.useState('');
     const [status, setStatus] = React.useState('');
@@ -47,9 +63,9 @@ export default function Form() {
         setAlertMessage(null);
         setAlertSeverity(null);
     };
-    const handleChangeDate= (newDate) => {
+    const handleChangeDate = (newDate) => {
         setDate(newDate);
-    
+
     };
     const handleChangeCategory = (event) => {
         setCategorie(event.target.value);
@@ -72,7 +88,7 @@ export default function Form() {
     const handleChangeDescription = (e) => {
         setDescription(e.target.value)
     }
-    
+
     // console.log(tableTasks);
     const addTask = (e) => {
 
@@ -99,6 +115,8 @@ export default function Form() {
                 description: description
             }
 
+            console.log(task);
+            updateStatus(task);
             tableTasks.push(task);
             setAlertMessage("Tâche ajoutée avec succès...!!!");
             setAlertSeverity("success");
@@ -143,11 +161,11 @@ export default function Form() {
                         <MenuItem value={'ExtraAcademique'}>Extra-académique</MenuItem>
                         <MenuItem value={'Distraction'}>Distraction</MenuItem>
                     </Select>
-                    
+
                     <TextField sx={{ p: 0, marginY: 2, height: 0.5 }} id="outlined-basic" label="Titre" variant="outlined" onChange={handleChangeTitle} value={titre} />
-                    <LocalizationProvider  dateAdapter={AdapterDayjs}>
-                        <DemoContainer  sx={{ marginBottom: 2}} components={['DatePicker', 'DatePicker', 'DatePicker']}>
-                            <DatePicker label="Date" value={date} onChange={(date) => handleChangeDate(date)}name="startDate" />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer sx={{ marginBottom: 2 }} components={['DatePicker', 'DatePicker', 'DatePicker']}>
+                            <DatePicker label="Date" value={date} onChange={(date) => handleChangeDate(date)} name="startDate" />
                         </DemoContainer>
                     </LocalizationProvider>
 

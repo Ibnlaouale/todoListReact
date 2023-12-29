@@ -8,6 +8,9 @@ import { Pie } from "react-chartjs-2"; // In the react-chartjs-2 library, import
 
 // Define an array of labels.
 const labels = ['Terminé', 'Encours', 'Nouveau'];
+let countNouveau = JSON.parse(localStorage.getItem('countNouveau'));
+let countTermier = JSON.parse(localStorage.getItem('countTerminer'));
+let countEncours = JSON.parse(localStorage.getItem('countEncours'));
 
 // Defined an object.
 const data = {
@@ -16,7 +19,7 @@ const data = {
     {
       label: "Tasks",
       backgroundColor: ['#61DAFB', '#00FFCC', '#086171'],
-      data: [20, 30, 45],
+      data: [countTermier, countEncours, countNouveau],
     },
   ],
 };
